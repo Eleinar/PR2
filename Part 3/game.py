@@ -1,6 +1,6 @@
 class SoyuzDocking:
     # Конструктор
-    def __init__(self, distance, speed, fuel):
+    def __init__(self, distance, speed, fuel): # Конструктор переделан, чтобы пользователь мог сам определять параметры
         self.__distance = distance,
         self.__speed = speed
         self.__fuel = fuel
@@ -18,7 +18,7 @@ class SoyuzDocking:
     def has_docked(self):
         return self.__distance <= 0
 
-def start_game():
+def start_game(): # Начало игры вынесено в отдельный метод
     print("Добро пожаловать в симуляцию стыковки Союз Т-6!.")
     print("Ваша миссия - стоковка со станцией Салют-7.")
     print("Вы можете управлять скоростью косиического корабля сжигая, топливо")
