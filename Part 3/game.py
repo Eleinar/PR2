@@ -1,27 +1,40 @@
 class SoyuzDocking:
-    def __init__(self):
-        self.distance = 500
-        self.speed = 50
-        self.fuel = 100
+    # Конструктор
+    def __init__(self, distance, speed, fuel):
+        self.__distance = distance,
+        self.__speed = speed
+        self.__fuel = fuel
 
+    # Метод для сжигания топлива и снижения скорости
     def perform_burn(self, burn_amount):
-        self.speed = max(self.speed - burn_amount, 0)
-        self.fuel = max(self.speed - burn_amount, 0)
+        self.__speed = max(self.__speed - burn_amount, 0)
+        self.__fuel = max(self.__speed - burn_amount, 0)
 
+    # Метод для обновления дистанции
     def update_distance(self):
-        self.distance = max(self.distance - self.speed, 0)
+        self.__distance = max(self.__distance - self.__speed, 0)
 
+    # Метод, который показывает, произошла ли состыковка
     def has_docked(self):
-        return self.distance <= 0
+        return self.__distance <= 0
 
-def main():
+def start_game():
     print("Добро пожаловать в симуляцию стыковки Союз Т-6!.")
     print("Ваша миссия - стоковка со станцией Салют-7.")
     print("Вы можете управлять скоростью косиического корабля сжигая, топливо")
     print("Кадлая еденица сожжённого топлива замедляет космический корабль на 1 м/с")
     print("Удачи экипажу!\n")
 
-    docking_sequence = SoyuzDocking()
+
+
+def main():
+    start_game()
+
+    speed = int(input("Введите начальную скорость: "))
+    distance = int(input("Введите начальную дистанцию:"))
+    fuel = int(input("Введите количество топлива: "))
+    docking_sequence = SoyuzDocking(distance, speed, fuel)
+
     # Главный игровой цикл
     while not docking_sequence.has_docked():
         print(f"Расстояние до Салют-7: {docking_sequence.distance} метров")
@@ -52,4 +65,4 @@ def main():
             print("Миссия провалена. Союз Т-6 не смог состыковаться с Салют-7")
 
 
-main()
+main() # Вызов метода main
